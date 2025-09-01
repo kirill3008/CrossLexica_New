@@ -1,4 +1,7 @@
 pascal/*.o
+pascal/*.ppu
+
+# output binaries
 pascal/ANTOCOD
 pascal/COGECONT
 pascal/COORDALN
@@ -34,3 +37,7 @@ pascal/STATVER
 pascal/STATVER2
 pascal/SUBJCONT
 pascal/SYNCOD
+pascal/topairs
+pascal/topairs2
+pascal/totrees
+pascal/totrees2
