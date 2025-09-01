@@ -1,5 +1,6 @@
 pascal/*.o
 pascal/*.ppu
+**/*.lock
 
 # output binaries
 pascal/ANTOCOD
