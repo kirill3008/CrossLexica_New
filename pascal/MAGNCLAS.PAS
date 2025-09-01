@@ -2901,15 +2901,16 @@ BEGIN
   REPEAT
     INC (J);
     L_MASC := LENGTH (LIST_ATL [J, MASC]);
-    IF (L_MASC - 1 <= L ) AND (L <= L_MASC + 2)
+    IF (L_MASC - 1 <= L) AND (L <= L_MASC + 2)
       THEN
         BEGIN 
-          GND := NONE;
-          REPEAT FOR GND := MASC TO COMN DO
-            INC (GND);
-            FOUND := (TOKEN = LIST_ATL [J, GND]);
+          GND := MASC;  // Start with MASC
+          REPEAT
+            FOUND := (TOKEN = LIST_ATL[J, GND]);
+            IF NOT FOUND THEN
+              INC(GND);
           UNTIL FOUND OR (GND = COMN);
-        END;
+    END;
   UNTIL FOUND OR (J = MAX_VLA);
 
   IF FOUND

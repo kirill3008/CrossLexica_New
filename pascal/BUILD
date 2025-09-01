@@ -41,6 +41,7 @@ fpc_binary(
     deps = [
         ":CLASTABL",
         ":NOUNTHRU",
+        ":INITVER4",
     ],
 )
 
@@ -76,6 +77,7 @@ fpc_binary(
     deps = [
         ":CLASTABL",
         ":NOUNTHRU",
+        ":INITVER4",
     ],
 )
 
@@ -127,6 +129,7 @@ fpc_binary(
     name = "SYNCOD",
     src = "SYNCOD.PAS",
     deps = [
+        ":INITVER4",
         ":CLASTABL",
         ":NOUNTHRU",
     ],
