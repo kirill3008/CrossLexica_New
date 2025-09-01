@@ -21,6 +21,9 @@ fpc_unit(
 fpc_unit(
     name = "INITVER4",
     src = "INITVER4.PAS",
+    deps = [
+        ":CLASTABL",
+    ],
 )
 
 fpc_unit(
@@ -35,6 +38,10 @@ fpc_unit(
 fpc_binary(
     name = "COORDALN",
     src = "COORDALN.PAS",
+    deps = [
+        ":CLASTABL",
+        ":NOUNTHRU",
+    ],
 )
 
 fpc_binary(
@@ -66,6 +73,10 @@ fpc_binary(
 fpc_binary(
     name = "DISTANT2",
     src = "DISTANT2.PAS",
+    deps = [
+        ":CLASTABL",
+        ":NOUNTHRU",
+    ],
 )
 
 fpc_binary(
@@ -107,11 +118,18 @@ fpc_binary(
 fpc_binary(
     name = "topairs",
     src = "topairs.pas",
+    deps = [
+        ":CLASTABL",
+    ],
 )
 
 fpc_binary(
     name = "SYNCOD",
     src = "SYNCOD.PAS",
+    deps = [
+        ":CLASTABL",
+        ":NOUNTHRU",
+    ],
 )
 
 fpc_binary(
@@ -202,6 +220,7 @@ fpc_binary(
 fpc_binary(
     name = "COGECONT",
     src = "COGECONT.PAS",
+    deps = [":INITVER4"],
 )
 
 fpc_binary(
