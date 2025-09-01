@@ -5,41 +5,25 @@ Bazel rules for building Pascal code with Free Pascal Compiler.
 def _object_file_name(basename):
     return basename + ".o"
 
-def _binary_file_name(basename, platform, output_type):
+def _binary_file_name(basename, output_type):
     if output_type == "unit":
         return basename + ".ppu"
     if output_type == "library":
-        if platform == "macos":
-            return "lib" + basename + ".dylib"
-        if platform == "linux":
-            return "lib" + basename + ".so"
-        if platform == "windows":
-            return basename + ".dll"
-        fail("unsupported platform " + platform)
+        return "lib" + basename + ".so"
     if output_type == "program":
-        if platform == "windows":
-            return basename + ".exe"
         return basename
     fail("unuspported type " + output_type)
 
 def _fpc_common_impl(ctx, output_type):
-    platform = ""
-    executable = ""
-    if ctx.target_platform_has_constraint(ctx.attr._windows_constraint[platform_common.ConstraintValueInfo]):
-        platform = "windows"
-        executable = "C:\\opt\\lazarus\\fpc\\3.2.2\\bin\\x86_64-win64\\fpc.exe"
-    elif ctx.target_platform_has_constraint(ctx.attr._linux_constraint[platform_common.ConstraintValueInfo]):
-        platform = "linux"
-        executable = "/usr/bin/fpc"
-    elif ctx.target_platform_has_constraint(ctx.attr._macos_constraint[platform_common.ConstraintValueInfo]):
-        platform = "macos"
-        executable = "/usr/local/bin/fpc"
-    else:
-        fail("Unsupported platform!")
+    executable = "/usr/bin/fpc"
 
-    basename = ctx.file.src.basename.replace(".pas", "")
+    if ctx.file.src.basename.endswith(".pas") or ctx.file.src.basename.endswith(".PAS"):
+        basename = ctx.file.src.basename[:-4]
+    else:
+        fail("Invalid file extension")
+
     object_out = ctx.actions.declare_file(_object_file_name(basename))
-    main_out = ctx.actions.declare_file(_binary_file_name(basename, platform, output_type))
+    main_out = ctx.actions.declare_file(_binary_file_name(basename, output_type))
 
     arguments = []
     unit_dirs = {}
@@ -50,9 +34,10 @@ def _fpc_common_impl(ctx, output_type):
             unit_dirs[unit_dir] = 1
     arguments.append("-o{}".format(main_out.path))
     arguments.append(ctx.file.src.path)
+    arguments.append("-Fccp866")
 
     env = {}
-    if output_type in ["library", "program"] and platform == "linux":
+    if output_type in ["library", "program"]:
         env["PATH"] = "/usr/bin"  # needs ld to link library
     outputs = [main_out, object_out]
     ctx.actions.run(
@@ -74,9 +59,6 @@ fpc_unit = rule(
     attrs = {
         "src": attr.label(mandatory = True, allow_single_file = True),
         "deps": attr.label_list(),
-        "_windows_constraint": attr.label(default = Label("@platforms//os:windows")),
-        "_linux_constraint": attr.label(default = Label("@platforms//os:linux")),
-        "_macos_constraint": attr.label(default = Label("@platforms//os:macos")),
     },
 )
 
@@ -90,9 +72,6 @@ fpc_library = rule(
     attrs = {
         "src": attr.label(mandatory = True, allow_single_file = True),
         "deps": attr.label_list(),
-        "_windows_constraint": attr.label(default = Label("@platforms//os:windows")),
-        "_linux_constraint": attr.label(default = Label("@platforms//os:linux")),
-        "_macos_constraint": attr.label(default = Label("@platforms//os:macos")),
     },
 )
 
@@ -107,8 +86,5 @@ fpc_binary = rule(
     attrs = {
         "src": attr.label(mandatory = True, allow_single_file = True),
         "deps": attr.label_list(),
-        "_windows_constraint": attr.label(default = Label("@platforms//os:windows")),
-        "_linux_constraint": attr.label(default = Label("@platforms//os:linux")),
-        "_macos_constraint": attr.label(default = Label("@platforms//os:macos")),
     },
 )
