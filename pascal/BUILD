@@ -43,11 +43,13 @@ fpc_binary(
         ":NOUNTHRU",
         ":INITVER4",
     ],
+    visibility = ["//visibility:public"],
 )
 
 fpc_binary(
     name = "STATSUB3",
     src = "STATSUB3.PAS",
+    visibility = ["//visibility:public"],
 )
 
 fpc_binary(
@@ -57,18 +59,21 @@ fpc_binary(
         ":CLASTABL",
         ":INITVER4",
     ],
+    visibility = ["//visibility:public"],
 )
 
 fpc_binary(
     name = "COSUCONT",
     src = "COSUCONT.PAS",
     deps = [":CLASTABL"],
+    visibility = ["//visibility:public"],
 )
 
 fpc_binary(
     name = "ENCOGER2",
     src = "ENCOGER2.PAS",
     deps = [":CLASTABL"],
+    visibility = ["//visibility:public"],
 )
 
 fpc_binary(
@@ -79,6 +84,7 @@ fpc_binary(
         ":NOUNTHRU",
         ":INITVER4",
     ],
+    visibility = ["//visibility:public"],
 )
 
 fpc_binary(
@@ -88,23 +94,27 @@ fpc_binary(
         ":CLASTABL",
         ":NOUNTHRU",
     ],
+    visibility = ["//visibility:public"],
 )
 
 fpc_binary(
     name = "ENCPART2",
     src = "ENCPART2.PAS",
     deps = [":CLASTABL"],
+    visibility = ["//visibility:public"],
 )
 
 fpc_binary(
     name = "SINGMUL5",
     src = "SINGMUL5.PAS",
+    visibility = ["//visibility:public"],
 )
 
 fpc_binary(
     name = "COPUCONT",
     src = "COPUCONT.PAS",
     deps = [":INITVER4"],
+    visibility = ["//visibility:public"],
 )
 
 fpc_binary(
@@ -115,6 +125,7 @@ fpc_binary(
         ":INITVER4",
         ":NOUNTHRU",
     ],
+    visibility = ["//visibility:public"],
 )
 
 fpc_binary(
@@ -123,6 +134,7 @@ fpc_binary(
     deps = [
         ":CLASTABL",
     ],
+    visibility = ["//visibility:public"],
 )
 
 fpc_binary(
@@ -133,6 +145,7 @@ fpc_binary(
         ":CLASTABL",
         ":NOUNTHRU",
     ],
+    visibility = ["//visibility:public"],
 )
 
 fpc_binary(
@@ -142,11 +155,13 @@ fpc_binary(
         ":CLASTABL",
         ":INITVER4",
     ],
+    visibility = ["//visibility:public"],
 )
 
 fpc_binary(
     name = "CUT_EXPL",
     src = "CUT_EXPL.PAS",
+    visibility = ["//visibility:public"],
 )
 
 fpc_binary(
@@ -156,6 +171,7 @@ fpc_binary(
         ":CLASTABL",
         ":INITVER4",
     ],
+    visibility = ["//visibility:public"],
 )
 
 fpc_binary(
@@ -165,92 +181,109 @@ fpc_binary(
         ":CLASTABL",
         ":INITVER4",
     ],
+    visibility = ["//visibility:public"],
 )
 
 fpc_binary(
     name = "ENCODAV",
     src = "ENCODAV.PAS",
     deps = [":INITVER4"],
+    visibility = ["//visibility:public"],
 )
 
 fpc_binary(
     name = "STATADJ",
     src = "STATADJ.PAS",
+    visibility = ["//visibility:public"],
 )
 
 fpc_binary(
     name = "STATVER",
     src = "STATVER.PAS",
+    visibility = ["//visibility:public"],
 )
 
 fpc_binary(
     name = "STATVER2",
     src = "STATVER2.PAS",
+    visibility = ["//visibility:public"],
 )
 
 fpc_binary(
     name = "topairs2",
     src = "topairs2.pas",
+    visibility = ["//visibility:public"],
 )
 
 fpc_binary(
     name = "SINGMUL2",
     src = "SINGMUL2.PAS",
     deps = [":CLASTABL"],
+    visibility = ["//visibility:public"],
 )
 
 fpc_binary(
     name = "LONGCLAS",
     src = "LONGCLAS.PAS",
     deps = [":CLASTABL"],
+    visibility = ["//visibility:public"],
 )
 
 fpc_binary(
     name = "SINGMULT",
     src = "SINGMULT.PAS",
+    visibility = ["//visibility:public"],
 )
 
 fpc_binary(
     name = "GETSHORT",
     src = "GETSHORT.PAS",
+    visibility = ["//visibility:public"],
 )
 
 fpc_binary(
     name = "SINGMUL3",
     src = "SINGMUL3.PAS",
+    visibility = ["//visibility:public"],
 )
 
 fpc_binary(
     name = "COGECONT",
     src = "COGECONT.PAS",
     deps = [":INITVER4"],
+    visibility = ["//visibility:public"],
 )
 
 fpc_binary(
     name = "COPACONT",
     src = "COPACONT.PAS",
     deps = [":INITVER4"],
+    visibility = ["//visibility:public"],
 )
 
 fpc_binary(
     name = "SINGMUL4",
     src = "SINGMUL4.PAS",
+    visibility = ["//visibility:public"],
 )
 
 fpc_binary(
     name = "ENCODVV",
     src = "ENCODVV.PAS",
     deps = [":INITVER4"],
+    visibility = ["//visibility:public"],
 )
 
 fpc_binary(
     name = "GETPARTI",
     src = "GETPARTI.PAS",
+    visibility = ["//visibility:public"],
 )
 
 fpc_binary(
     name = "totrees",
     src = "totrees.pas",
+    visibility = ["//visibility:public"],
 )
 
 fpc_binary(
@@ -261,6 +294,7 @@ fpc_binary(
         ":INITVER4",
         ":NOUNTHRU",
     ],
+    visibility = ["//visibility:public"],
 )
 
 fpc_binary(
@@ -270,11 +304,13 @@ fpc_binary(
         ":CLASTABL",
         ":INITVER4",
     ],
+    visibility = ["//visibility:public"],
 )
 
 fpc_binary(
     name = "totrees2",
     src = "totrees2.pas",
+    visibility = ["//visibility:public"],
 )
 
 fpc_binary(
@@ -285,21 +321,25 @@ fpc_binary(
         ":ENCODSCI",
         ":NOUNTHRU",
     ],
+    visibility = ["//visibility:public"],
 )
 
 fpc_binary(
     name = "SUBJCONT",
     src = "SUBJCONT.PAS",
     deps = [":SUBMODUL"],
+    visibility = ["//visibility:public"],
 )
 
 fpc_binary(
     name = "MERGEV",
     src = "MERGEV.PAS",
+    visibility = ["//visibility:public"],
 )
 
 fpc_binary(
     name = "NAMESAP",
     src = "NAMESAP.PAS",
     deps = [":CLASTABL"],
+    visibility = ["//visibility:public"],
 )
